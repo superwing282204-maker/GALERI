@@ -1,0 +1,105 @@
+  <!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Papan Kenangan — TKJ 1 SMK Imelda Medan</title>
+<meta name="description" content="Papan kenangan digital kelas TKJ 1 — unggah foto dan video, langsung tampil real-time untuk semua teman sekelas.">
+
+<!-- Font Awesome (dipakai di seluruh situs) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="galeri.css">
+</head>
+<body>
+
+<div class="board-texture" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a href="index.html" class="topbar__back"><i class="fa-solid fa-arrow-left"></i> Kembali ke beranda</a>
+  <div class="topbar__badge"><i class="fa-solid fa-graduation-cap"></i> TKJ 1 &middot; SMK Imelda Medan</div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <p class="hero__eyebrow">— kelas kami, cerita kami —</p>
+    <h1 class="hero__title">Papan Kenangan<br>TKJ&nbsp;1</h1>
+    <p class="hero__sub">Tempel fotomu, rekam videomu. Setiap yang diunggah langsung nempel di papan ini, real-time, buat semua anak kelas lihat bareng-bareng.</p>
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <span class="hero__stat-num" id="stat-count">0</span>
+        <span class="hero__stat-label">kenangan tersimpan</span>
+      </div>
+      <div class="hero__stat">
+        <span class="hero__stat-dot" id="stat-live"></span>
+        <span class="hero__stat-label">terhubung real-time</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="upload-card" id="upload-card">
+    <div class="upload-card__pin" aria-hidden="true"></div>
+    <h2 class="upload-card__title">Tempel Kenangan Baru</h2>
+
+    <form id="upload-form" class="upload-form">
+      <div class="field">
+        <label for="nama">Namamu</label>
+        <input type="text" id="nama" name="nama" placeholder="mis. Alex" maxlength="40" required>
+      </div>
+
+      <div class="field">
+        <label for="caption">Cerita singkat (opsional)</label>
+        <input type="text" id="caption" name="caption" placeholder="mis. Rame-rame sebelum ujian praktik" maxlength="120">
+      </div>
+
+      <div class="field">
+        <label for="file-input">Foto atau video</label>
+        <div class="dropzone" id="dropzone">
+          <input type="file" id="file-input" name="file" accept="image/*,video/*" required>
+          <div class="dropzone__inner" id="dropzone-inner">
+            <i class="fa-solid fa-camera-retro"></i>
+            <p><strong>Klik untuk pilih file</strong> atau seret ke sini</p>
+            <span class="dropzone__hint">Gambar maks. 8MB &middot; Video maks. 60MB</span>
+          </div>
+          <div class="dropzone__preview" id="dropzone-preview" hidden></div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-pin" id="submit-btn">
+        <i class="fa-solid fa-thumbtack"></i> Tempel ke Papan
+      </button>
+
+      <div class="progress" id="progress" hidden>
+        <div class="progress__bar" id="progress-bar"></div>
+        <span class="progress__label" id="progress-label">Mengunggah… 0%</span>
+      </div>
+
+      <p class="form-msg" id="form-msg" role="status"></p>
+    </form>
+  </section>
+
+  <section class="board-section">
+    <div class="board-section__head">
+      <h2>Papan Kelas</h2>
+      <p>Terbaru muncul paling atas — otomatis, tanpa perlu refresh.</p>
+    </div>
+
+    <div class="board-grid" id="gallery-grid">
+      <!-- item dirender oleh galeri.js -->
+    </div>
+
+    <div class="board-empty" id="board-empty">
+      <i class="fa-solid fa-thumbtack"></i>
+      <p>Papan masih kosong. Jadilah yang pertama menempel kenangan!</p>
+    </div>
+  </section>
+
+</main>
+<!-- Firebase + Cloudinary (ES module, via CDN — tidak perlu install apa pun) -->
+<script type="module" src="firebase-config.js"></script>
+<script type="module" src="cloudinary-config.js"></script>
+<script type="module" src="galeri.js"></script>
+
+</body>
+</html>
